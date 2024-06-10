@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\CarPhoto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -50,7 +51,8 @@ class CarController extends Controller
     public function show(string $id)
     {
         $car = Car::findOrFail($id);
-        return view('dashboard.showCar', compact('car'));
+        $photos = CarPhoto::all();
+        return view('dashboard.showCar', compact('car','photos'));
     }
 
     /**
@@ -125,15 +127,17 @@ class CarController extends Controller
 
     public function destroyPhotos($id)
     {
-        $photo = CarPhoto::where('id',$id)->get();
+        $photo = CarPhoto::findOrFail($id);
 
         // Delete the photo file from storage
         Storage::delete(str_replace('storage/', 'public/', $photo->name));
 
-        // Delete the photo record from the database
-        $photo->delete();
+        // Update the photo record to set car_id to NULL
+        $photo->carId = null;
+        $photo->save();
 
         return redirect()->back()->with('success', 'Photo deleted successfully');
     }
+
 
 }

@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="control block-cube block-input">
-        <input name="tel" type="tel" placeholder="Telephone">
+        <input name="tel" type="number" placeholder="Telephone">
         <div class="bg-top">
             <div class="bg-inner"></div>
         </div>

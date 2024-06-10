@@ -38,7 +38,7 @@
                                     <img src="{{ $photo->name }}" style="max-width: 200px;margin: 6px" />
                                     <form action="{{ route('car_photos.destroy', $photo->id) }}" method="POST">
                                         @csrf
-                                        @method('DELETE')
+                                        @method('delete')
                                         <button type="submit" class="btn btn-danger btn-sm mt-2">Delete</button>
                                     </form>
                                 </div>

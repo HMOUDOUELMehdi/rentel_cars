@@ -4,7 +4,8 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-header bg-white">
-                <h3>Users</h3>
+                <h3>Client</h3>
+                <a href="{{ route('client.create') }}" class="btn btn-success">Add New Client</a>
             </div>
             <div class="card-body">
                 <table class="table table-striped table-hover">

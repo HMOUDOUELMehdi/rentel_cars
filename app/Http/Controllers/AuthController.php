@@ -29,6 +29,22 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
+    public function addClient(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'tel' => 'required',
+            'password' => 'required',
+        ]);
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        User::create($validatedData);
+
+        return redirect()->back()->with(['success' => 'user create successufely']);
+    }
+
     public function showLoginForm()
     {
         return view('auth.login');
