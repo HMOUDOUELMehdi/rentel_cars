@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contracts', function (Blueprint $table) {
-            $table->id('contractId');
-            $table->unsignedBigInteger('carId');
-            $table->unsignedBigInteger('userId');
-            $table->date('dateDeput');
-            $table->date('dateFin');
-            $table->decimal('montant');
-            $table->timestamps();
+            Schema::create('contracts', function (Blueprint $table) {
+                $table->id('contractId');
+                $table->unsignedBigInteger('carId');
+                $table->unsignedBigInteger('userId');
+                $table->date('dateDeput');
+                $table->date('dateFin');
+                $table->decimal('montant');
+                $table->timestamps();
 
-            $table->foreign('carId')->references('id')->on('cars');
-            $table->foreign('userId')->references('id')->on('users');
-        });
+                $table->foreign('carId')->references('id')->on('cars');
+                $table->foreign('userId')->references('id')->on('users');
+            });
 
     }
 

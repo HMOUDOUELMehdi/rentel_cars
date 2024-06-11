@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contract extends Model
 {
+
+    protected $fillable = [
+        'carId',
+        'userId',
+        'dateDeput',
+        'dateFin',
+        'montant',
+    ];
+
     use HasFactory;
 }

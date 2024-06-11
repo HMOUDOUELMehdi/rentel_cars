@@ -132,12 +132,10 @@ class CarController extends Controller
         // Delete the photo file from storage
         Storage::delete(str_replace('storage/', 'public/', $photo->name));
 
-        // Update the photo record to set car_id to NULL
-        $photo->carId = null;
-        $photo->save();
+        // Delete the photo record from the database
+        $photo->delete();
 
-        return redirect()->back()->with('success', 'Photo deleted successfully');
+        return response()->json(['success' => true]);
     }
-
 
 }
